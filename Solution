@@ -1,0 +1,19 @@
+From the problem description, we can see that each sock has only 1 or 0 matches. IE a list [1, 1, 1] would have only a single pair, rather than 3 unique pairs that
+could be made. If we extrapolate this logic to larger lists, we see that the number of pairs of a certain color sock would be equal to the floor division by two of 
+the number of socks of that color. For example, [1, 1, 1, 1] and [1, 1, 1, 1, 1] would both have only two pairs. 
+
+The python solution to this problem looks something like this. 
+
+def sockMerchant(n, ar):
+  pairs = 0
+  counts = {}
+  
+  for x in ar:
+    if x not in counts.keys():
+      counts[x] = 1
+    elif x in counts.keys():
+      counts[x] += 1
+  
+  for item in counts:
+    pairs += item // 2
+return pairs
